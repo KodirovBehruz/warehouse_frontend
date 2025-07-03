@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -13,16 +12,13 @@
         background-color: var(--white);
         border: 0.11rem solid var(--black);
         border-radius: 0.5rem;
-
         .title {
             color: var(--black);
         }
-
         .input {
             width: 18rem;
             height: 2.5rem;
         }
-
         .entryButton {
             background-color: var(--blue);
             border-color: var(--blue);
@@ -33,12 +29,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
             .link {
                 margin-left: 0.5rem;
                 color: var(--blue);
                 text-decoration: none;
-
                 &:hover {
                     text-decoration: underline;
                 }

@@ -1,14 +1,14 @@
 import {IProductsActions} from "./interface.ts";
-import {IConnector} from "../../../models/delivery/common/IConnector.ts";
-import {GetListResponse, IApiResult} from "../../../models/delivery/common/IResultJSON.ts";
-import {apiRequestWrapper} from "../../../helpers/delivery.ts";
-import {HTTP_STATUSES} from "../../../constants/httpStatuses.ts";
-import {IQueryContract} from "../../../models/delivery/contracts/IQueryContract";
+import {IConnector} from "@models/delivery/common/IConnector.ts";
+import {GetListResponse, IApiResult} from "@models/delivery/common/IResultJSON.ts";
+import {apiRequestWrapper} from "@helpers/delivery.ts";
+import {HTTP_STATUSES} from "@constants/httpStatuses.ts";
+import {IQueryContract} from "@models/delivery/contracts/IQueryContract";
 import {
     IProductCreateContract,
     IProductsResponseContract,
     IProductUpdateContract
-} from "../../../models/delivery/contracts/IProducts.ts";
+} from "@models/delivery/contracts/IProducts.ts";
 
 export class ProductsActions implements IProductsActions {
     connector: IConnector

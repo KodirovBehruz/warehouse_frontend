@@ -1,14 +1,8 @@
-import {IConnector} from "../../../models/delivery/common/IConnector.ts";
-import {
-    ILoginContract,
-    IRegisterContract,
-    IAuthResponseContract
-} from "../../../models/delivery/contracts/IUser.ts";
-import {IApiResult} from "../../../models/delivery/common/IResultJSON.ts";
+import { IConnector } from '../../../models/delivery/common/IConnector.ts'
+import { IApiResult } from '../../../models/delivery/common/IResultJSON.ts'
+import { IAuthResponseContract } from '../../../models/delivery/contracts/IUser.ts'
 
 export interface IAuthActions {
-    connector: IConnector;
-    register(data: IRegisterContract): Promise<IApiResult<IAuthResponseContract>>
-    login(data: ILoginContract): Promise<IApiResult<IAuthResponseContract>>
-    getSelf(): Promise<IApiResult<IAuthResponseContract>>
+	connector: IConnector
+	getSelf(): Promise<IApiResult<IAuthResponseContract>>
 }

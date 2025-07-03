@@ -1,18 +1,20 @@
 import {FC} from "react";
-import {Button, Card, Form, Input, message} from "antd";
+import {Button, Card, Form, Input, message, Typography} from "antd";
 import {useNavigate} from "react-router-dom";
-import {ROUTES} from "../../constants/routing.tsx";
-import {authStore} from "../../store/useAuthStore.ts";
+import {ROUTES} from "@constants/routing.tsx";
+import {authStore} from "@store/useAuthStore.ts";
+import { IRegisterValues } from '@models/delivery/contracts/IAuthContracts.ts'
+const { Link } = Typography
 
 export const Register: FC = () => {
     const { register, loading } = authStore()
     const navigate = useNavigate()
 
-    const onFinish = async (values) => {
-        const result = await register(values);
+    const onFinish = async (values: IRegisterValues) => {
+        const result = await register(values)
         if (result.success) {
             message.success(result.message)
-            navigate(ROUTES.LOGIN)
+            navigate(ROUTES.INDEX)
         } else {
             message.error(result.message);
         }
@@ -60,6 +62,10 @@ export const Register: FC = () => {
                     <Button type="primary" htmlType="submit" loading={loading} block>
                         Войти
                     </Button>
+                </Form.Item>
+                <Form.Item style={{ textAlign: "center", marginBottom: 0 }}>
+                    У вас уже есть аккаунт{" "}
+                    <Link onClick={() => navigate(ROUTES.LOGIN)}>Войти</Link>
                 </Form.Item>
             </Form>
         </Card>

@@ -2,9 +2,9 @@ import {FC, useState} from "react";
 import styles from "./index.module.scss";
 import {Spin, Input, Button, Pagination} from "antd";
 import { SearchOutlined } from '@ant-design/icons';
-import { ProductsTable } from "../../components/organisms/ProductsTable";
-import { useCatalog } from "../../hooks/API/Products/useCatalog.tsx";
-import {CreateProductModal} from "../../components/molecules/CreateProductModal";
+import { ProductsTable } from "@components/organisms/ProductsTable";
+import { useCatalog } from "@hooks/API/Products/useCatalog.tsx";
+import {CreateProductModal} from "@molecules/CreateProductModal";
 
 
 export const Products: FC = ({onCreateSuccess}) => {

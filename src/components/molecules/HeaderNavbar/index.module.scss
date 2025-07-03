@@ -1,0 +1,33 @@
+@use "@styles/colors";
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: 600;
+  user-select: none;
+  margin-top: 0.1rem;
+  a {
+    position: relative;
+    color: colors.$black;
+    text-decoration: none;
+    padding-bottom: 0.25rem;
+    transition: color 0.3s ease;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background-color: colors.$blue;
+      transition: width 0.3s ease;
+    }
+  }
+  .active {
+    color: colors.$blue;
+    &::after {
+      width: 100%;
+    }
+  }
+}

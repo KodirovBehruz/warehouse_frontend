@@ -1,11 +1,11 @@
-@use "@styles/common" as cm;
-@use "@styles/fonts" as ft;
+@use "@styles/mixins";
+@use "@styles/fonts";
 
 .products {
     background-color: var(--white-alt);
     padding: 2rem 0;
     .container {
-        @include cm.container;
+        @include mixins.container;
         .products_header {
             display: flex;
             justify-content: space-between;
@@ -16,7 +16,7 @@
             border-radius: 0.5rem;
             box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
             h1 {
-                @include ft.H1;
+                @include fonts.H1;
                 color: var(--gray);
             }
             .filters {
@@ -51,12 +51,8 @@
         }
     }
 }
-
 .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 75vh;
+    @include mixins.loading;
 }
 
 
