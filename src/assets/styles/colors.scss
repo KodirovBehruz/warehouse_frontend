@@ -1,0 +1,16 @@
+:root {
+    --white: #ffffff;
+    --white-alt: #e2e6ea;
+    --black: #000;
+    --gray: #495057;
+    --gray-alt: #212529;
+    --blue: #0055FF;
+    --blue-alt: #1F2535;
+    --blue-light: #3A537C;
+    --yellow: #FFD700;
+}
+
+
+@mixin base-shadow {
+    box-shadow: 0 0 0.188rem rgba(0, 0, 0, 0.15);
+}

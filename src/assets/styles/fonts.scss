@@ -1,0 +1,18 @@
+@mixin open-sans {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+}
+
+@mixin H1 {
+    @include open-sans;
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 2.375rem;
+}
+
+@mixin H2 {
+    @include open-sans;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+}

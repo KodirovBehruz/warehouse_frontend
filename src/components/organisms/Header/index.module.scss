@@ -1,0 +1,52 @@
+@use "@styles/common" as cm;
+
+.header {
+    background-color: var(--white-alt);
+    padding: 1rem 0;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+    border-bottom: 0.0625rem solid var(--white);
+
+    .container {
+        @include cm.container;
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.625rem 1.25rem;
+                border-radius: 0.5rem;
+                font-size: 16px;
+                font-weight: 500;
+                background-color: var(--blue);
+                color: var(--white);
+                text-decoration: none;
+                min-width: 120px;
+                height: 40px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                cursor: pointer;
+                white-space: nowrap;
+
+                &:hover {
+                    background-color: var(--blue);
+                    color: var(--white);
+                }
+                &.active {
+                    background-color: var(--blue);
+                    color: var(--white);
+                    font-weight: 600;
+                    box-shadow: 0 0.25rem 0.625rem rgba(108, 117, 125, 0.4);
+                }
+            }
+        }
+    }
+}
+
+
+.menuItems {
+    margin-top: 0.75rem;
+}
