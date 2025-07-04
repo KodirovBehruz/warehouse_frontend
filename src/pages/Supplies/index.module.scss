@@ -1,56 +1,56 @@
-@use "@styles/mixins";
-@use "@styles/fonts";
+@use '@styles/mixins';
+@use '@styles/fonts';
 
 .supplies {
-    background-color: var(--white-alt);
-    padding: 2rem 0;
-    .container {
-        @include mixins.container;
-        .supplies_header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.25rem;
-            padding: 1rem;
-            background-color: (var(--white));
-            border-radius: 0.5rem;
-            box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-            h1 {
-                @include fonts.H1;
-                color: var(--gray);
-            }
-            .filters {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                gap: 1rem;
-            }
-        }
-        .supplies_table {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            .pagination {
-                display: flex;
-                justify-content: center;
-                padding: 0.625rem 1.25rem;
-                border: 0.0625rem solid var(--white-alt);
-                background-color: var(--white);
-                border-radius: 0.5rem;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                &:hover {
-                    background-color: var(--white-alt);
-                }
-                &.active {
-                    background-color: var(--white-alt);
-                    color: var(--black);
-                }
-            }
-        }
+  background-color: var(--white-alt);
+  padding: 2rem 0;
+  .container {
+    @include mixins.container;
+    .supplies_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding: 1rem;
+      background-color: (var(--white));
+      border-radius: 0.5rem;
+      box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+      h1 {
+        @include fonts.H1;
+        color: var(--gray);
+      }
+      .filters {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1rem;
+      }
     }
+    .supplies_table {
+      background-color: var(--white);
+      border-radius: 0.5rem;
+      box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      .pagination {
+        display: flex;
+        justify-content: center;
+        padding: 0.625rem 1.25rem;
+        border: 0.0625rem solid var(--white-alt);
+        background-color: var(--white);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: var(--white-alt);
+        }
+        &.active {
+          background-color: var(--white-alt);
+          color: var(--black);
+        }
+      }
+    }
+  }
 }
 .loading {
-    @include mixins.loading;
+  @include mixins.loading;
 }

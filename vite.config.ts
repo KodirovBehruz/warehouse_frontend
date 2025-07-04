@@ -1,6 +1,6 @@
-import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
-import path from "path";
+import path from 'path'
+import { defineConfig } from 'vite'
 
 export default defineConfig(() => {
   return {
@@ -23,7 +23,7 @@ export default defineConfig(() => {
         '@pages': path.resolve(__dirname, './src/pages'),
         '@router': path.resolve(__dirname, './src/router'),
         '@store': path.resolve(__dirname, 'src/store'),
-      }
+      },
     },
     plugins: [react()],
     css: {
@@ -36,7 +36,7 @@ export default defineConfig(() => {
     server: {
       host: true,
       port: 5173,
-      strictPort: true
+      strictPort: true,
     },
   }
 })

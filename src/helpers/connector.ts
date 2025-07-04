@@ -1,11 +1,11 @@
-import axios, {AxiosInstance} from "axios";
+import axios, { AxiosInstance } from 'axios'
 
 export class ApiConnector {
-    connector: AxiosInstance
-    constructor(baseUrl: string) {
-        this.connector = axios.create({
-            baseURL: baseUrl,
-            withCredentials: true
-        })
-    }
+  connector: AxiosInstance
+  constructor(baseUrl: string) {
+    this.connector = axios.create({
+      baseURL: baseUrl,
+      withCredentials: true,
+    })
+  }
 }

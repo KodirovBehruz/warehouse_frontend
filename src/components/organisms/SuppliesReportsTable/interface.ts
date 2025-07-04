@@ -1,5 +1,5 @@
-import {ISuppliesResponseContract} from "../../../models/delivery/contracts/ISupplies.ts";
+import { ISuppliesResponseContract } from '@models/delivery/contracts/ISupplies.ts'
 
 export interface ISuppliesReportsTable {
-    data?: ISuppliesResponseContract[],
+  data?: ISuppliesResponseContract[]
 }

@@ -1,5 +1,5 @@
-import type { AxiosInstance } from "axios";
+import type { AxiosInstance } from 'axios'
 
 export interface IConnector {
-    connector: AxiosInstance
+  connector: AxiosInstance
 }

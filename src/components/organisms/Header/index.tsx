@@ -1,13 +1,13 @@
-import { Button } from 'antd'
-import styles from "./index.module.scss";
-import { HeaderNavbar } from '@molecules/HeaderNavbar';
-import { authStore } from '@store/useAuthStore.ts'
-import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@constants/routing'
+import { HeaderNavbar } from '@molecules/HeaderNavbar'
+import { authStore } from '@store/useAuthStore.ts'
+import { Button } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import styles from './index.module.scss'
 
 export const Header = () => {
-  const logout = authStore(state => state.logout)
-  const loading = authStore(state => state.loading)
+  const logout = authStore((state) => state.logout)
+  const loading = authStore((state) => state.loading)
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -25,7 +25,9 @@ export const Header = () => {
           <p>Warehouse</p>
         </div>
         <HeaderNavbar />
-        <Button onClick={handleLogout} loading={loading}>Выйти</Button>
+        <Button onClick={handleLogout} loading={loading}>
+          Выйти
+        </Button>
       </div>
     </header>
   )

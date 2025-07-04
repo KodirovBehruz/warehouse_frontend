@@ -17,7 +17,7 @@
       "@models/*": ["src/models/*"],
       "@pages/*": ["src/pages/*"],
       "@router/*": ["src/router/*"],
-      "@store/*": ["src/store/*"],
+      "@store/*": ["src/store/*"]
     },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",

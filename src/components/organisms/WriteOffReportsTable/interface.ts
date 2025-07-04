@@ -1,5 +1,5 @@
-import {IWriteOffResponseContract} from "../../../models/delivery/contracts/IWriteOff.ts";
+import { IWriteOffResponseContract } from '@models/delivery/contracts/IWriteOff.ts'
 
 export interface IWriteOffReportsTable {
-    data?: IWriteOffResponseContract[],
+  data?: IWriteOffResponseContract[]
 }

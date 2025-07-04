@@ -1,15 +1,15 @@
 export interface IAuthResponseContract {
-    accessToken: string
-    refreshToken: string
+  accessToken: string
+  refreshToken: string
 }
 
 export interface ILoginValues {
-    email: string
-    password: string
+  email: string
+  password: string
 }
 
 export interface IRegisterValues extends ILoginValues {
-    name: string
-    lastName: string
-    phoneNumber: string
+  name: string
+  lastName: string
+  phoneNumber: string
 }

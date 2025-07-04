@@ -1,6 +1,7 @@
-import {ISuppliesResponseContract} from "../../../models/delivery/contracts/ISupplies.ts";
+import { ISuppliesResponseContract } from '@models/delivery/contracts/ISupplies.ts'
 
 export interface ISuppliesTable {
-    data?: ISuppliesResponseContract[],
-    onDeleteSuccess?: () => void
+  data?: ISuppliesResponseContract[]
+  onDeleteSuccess?: () => void
+  onUpdateSuccess?: () => void
 }
