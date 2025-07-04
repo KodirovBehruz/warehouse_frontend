@@ -1,21 +1,22 @@
-import {useDelivery} from "../useDelivery.tsx";
-import {useFetch} from "../useFetch.tsx";
-import {useEffect} from "react";
-import {IQueryContract} from "../../../models/delivery/contracts/IQueryContract";
+import { useDelivery } from '@hooks/API/useDelivery.tsx'
+import { useFetch } from '@hooks/API/useFetch'
+import { IQueryContract } from '@models/delivery/contracts/IQueryContract'
+import { useEffect } from 'react'
 
-export const useGetWriteOffs = ({ onSuccess, onError}: {
-    onSuccess?: () => void
-    onError?: () => void
+export const useGetWriteOffs = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess?: () => void
+  onError?: () => void
 }) => {
-    const delivery = useDelivery()
-    const {result, loading, execute} = useFetch({
-        asyncFunction: (query: IQueryContract) =>
-            delivery.CS.writeOffActions.getList(query),
-        onSuccess,
-        onError
-    })
+  const delivery = useDelivery()
+  const { result, loading, execute } = useFetch({
+    asyncFunction: (query: IQueryContract) => delivery.CS.writeOffActions.getList(query),
+    onSuccess,
+    onError,
+  })
 
-    useEffect(() => {
-    }, [result])
-    return { result, loading, execute }
+  useEffect(() => {}, [result])
+  return { result, loading, execute }
 }

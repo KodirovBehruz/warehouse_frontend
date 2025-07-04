@@ -1,22 +1,23 @@
-import {useDelivery} from "../useDelivery.tsx";
-import {useFetch} from "../useFetch.tsx";
-import {useEffect} from "react";
-import {IQueryContract} from "../../../models/delivery/contracts/IQueryContract";
+import { useDelivery } from '@hooks/API/useDelivery'
+import { useFetch } from '@hooks/API/useFetch.tsx'
+import { IQueryContract } from '@models/delivery/contracts/IQueryContract'
+import { useEffect } from 'react'
 
-export const useGetProducts = ({ onSuccess, onError}: {
-    onSuccess?: () => void
-    onError?: () => void
+export const useGetProducts = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess?: () => void
+  onError?: () => void
 }) => {
-    const delivery = useDelivery();
-    const {result, loading, execute} = useFetch({
-        asyncFunction: (query: IQueryContract, headers: HeadersInit) =>
-            delivery.CS.productsActions.getList(query, { headers }), // Добавляем headers сюда
-        onSuccess,
-        onError
-    });
+  const delivery = useDelivery()
+  const { result, loading, execute } = useFetch({
+    asyncFunction: (query: IQueryContract) => delivery.CS.productsActions.getList(query),
+    onSuccess,
+    onError,
+  })
 
-    useEffect(() => {
-    }, [result]);
+  useEffect(() => {}, [result])
 
-    return { result, loading, execute };
-};
+  return { result, loading, execute }
+}

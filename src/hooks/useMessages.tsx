@@ -41,6 +41,7 @@ export const MessagesProvider: FC<PropsWithChildren> = ({ children }) => {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useMessage = (): IUseMessage => {
   const messagesContext = useContext(MessagesContext)
 

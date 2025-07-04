@@ -1,70 +1,96 @@
-import { create } from "zustand";
-import axios from "axios";
+import { supabase } from '@lib/supabaseClient'
+import { ILoginValues, IRegisterValues } from '@models/delivery/contracts/IAuthContracts'
+import type { User } from '@supabase/supabase-js'
+import { create } from 'zustand'
 
+export const authStore = create<{
+  token: string | null
+  userId: string | null
+  user?: User | null
+  loading: boolean
+  login: (values: ILoginValues) => Promise<{ success: boolean; message: string }>
+  register: (values: IRegisterValues) => Promise<{ success: boolean; message: string }>
+  logout: () => Promise<{ success: boolean; message: string }>
+}>((set) => ({
+  token: localStorage.getItem('token') || null,
+  userId: localStorage.getItem('userId') || null,
+  user: null,
+  loading: false,
 
-export const authStore = create((set) => ({
-    token: localStorage.getItem("token") || null,
-    userId: localStorage.getItem("userId") || null,
-    loading: false,
-    login: async (values) => {
-        set({ loading: true });
-        try {
-            const { data } = await axios.post("/api/auth/login", values);
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("userId", data.id);
-            set({ token: data.token, userId: data.id });
-            return { success: true, message: "Вы успешно авторизованы!" };
-        } catch (error) {
-            return { success: false, message: error.response?.data?.message || "Ошибка авторизации" };
-        } finally {
-            set({ loading: false });
-        }
-    },
-    register: async (values) => {
-        set({ loading: true });
-        try {
-            const { data } = await axios.post("/api/auth/register", values);
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("userId", data.id);
-            set({ token: data.token, userId: data.id });
-            return { success: true, message: "Вы успешно зарегистрированы!" };
-        } catch (error) {
-            return { success: false, message: error.response?.data?.message || "Ошибка регистрации" };
-        } finally {
-            set({ loading: false });
-        }
-    },
-    logout: async () => {
-        set({ loading: true });
-        try {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                return { success: false, message: "Токен не найден" };
-            }
+  login: async (values) => {
+    set({ loading: true })
+    try {
+      const { email, password } = values
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) return { success: false, message: error.message }
 
-            const response = await axios.post(
-                "/api/auth/logout",
-                {},
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    }
-                }
-            );
+      const accessToken = data.session?.access_token
+      const user = data.user
+      if (accessToken) {
+        localStorage.setItem('token', accessToken)
+      }
+      if (user) {
+        localStorage.setItem('userId', data.user.id)
+      }
+      set({ user, token: accessToken, userId: user?.id || null })
+      return { success: true, message: 'Вы успешно авторизованы!' }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, message: error.message }
+      }
+      return { success: false, message: 'Ошибка авторизации' }
+    } finally {
+      set({ loading: false })
+    }
+  },
+  register: async (values) => {
+    set({ loading: true })
+    try {
+      const { email, password, name, lastName, phoneNumber } = values
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { name, lastName, phoneNumber } },
+      })
+      if (error) return { success: false, message: error.message }
 
-            if (response.status === 200) {
-                localStorage.removeItem("token");
-                localStorage.removeItem("userId");
-                set({ token: null, managerId: null });
-                return { success: true, message: "Вы успешно вышли из системы!" };
-            } else {
-                return { success: false, message: "Ошибка выхода" };
-            }
-        } catch (error) {
-            return { success: false, message: error.response?.data?.message || "Ошибка выхода" };
-        } finally {
-            set({ loading: false });
-        }
-    },
-}));
-
+      const accessToken = data.session?.access_token
+      const user = data.user
+      if (accessToken) {
+        localStorage.setItem('token', accessToken)
+      }
+      if (user) {
+        localStorage.setItem('userId', user.id)
+      }
+      set({ user, token: accessToken, userId: user?.id || null })
+      return { success: true, message: 'Вы успешно зарегистрированы!' }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, message: error.message }
+      }
+      return { success: false, message: 'Ошибка регистрации' }
+    } finally {
+      set({ loading: false })
+    }
+  },
+  logout: async () => {
+    set({ loading: true })
+    try {
+      await supabase.auth.signOut()
+      localStorage.removeItem('userId')
+      localStorage.removeItem('token')
+      set({ user: null, token: null, userId: null })
+      return { success: true, message: 'Вы успешно вышли из системы!' }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { success: false, message: error.message }
+      }
+      return { success: false, message: 'Ошибка выхода' }
+    } finally {
+      set({ loading: false })
+    }
+  },
+}))

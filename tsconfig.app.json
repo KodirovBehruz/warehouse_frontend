@@ -1,5 +1,24 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@icons/*": ["src/assets/icons/*"],
+      "@styles/*": ["src/assets/styles/*"],
+      "@components/*": ["src/components/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@constants/*": ["src/constants/*"],
+      "@delivery/*": ["src/delivery/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@lib/*": ["src/lib/*"],
+      "@models/*": ["src/models/*"],
+      "@pages/*": ["src/pages/*"],
+      "@router/*": ["src/router/*"],
+      "@store/*": ["src/store/*"]
+    },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,

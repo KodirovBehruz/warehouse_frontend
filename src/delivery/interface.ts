@@ -1,5 +1,5 @@
-import {ICoreService} from "./CoreService/interface.ts";
+import { ICoreService } from './CoreService/interface.ts'
 
 export interface IDelivery {
-    CS: ICoreService
+  CS: ICoreService
 }

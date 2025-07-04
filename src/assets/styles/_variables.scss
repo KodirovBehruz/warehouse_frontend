@@ -1,0 +1,24 @@
+:root {
+  --shadow-sm: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 0.25rem 1rem rgba(0, 0, 0, 0.4);
+
+  --border-radius-sm: 0.3125rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.625rem;
+  --border-radius-btn: 0.125rem;
+  --border-radius-input: 1.25rem;
+
+  --font-family-base: 'Space Grotesk', sans-serif;
+
+  --container-width: 87.5rem;
+  --container-padding-x: 1.25rem;
+
+  --section-padding-y: 4.375rem;
+
+  --input-height: 2.5rem;
+  --button-height: 2.5rem;
+
+  --transition-duration: 0.2s;
+
+  --z-index-header: 15;
+}
